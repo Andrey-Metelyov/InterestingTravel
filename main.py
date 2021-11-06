@@ -22,30 +22,34 @@ def find_path(graph, start, end):
         # print("after:", wave)
     return -1
 
-n = int(input())
+def main():
+    n = int(input())
 
-cities = []
-for _ in range(n):
-    cities.append([int(x) for x in input().split()])
+    cities = []
+    for _ in range(n):
+        cities.append([int(x) for x in input().split()])
 
-max_distance = int(input())
+    max_distance = int(input())
 
-start, end = (int(x) for x in input().split())
+    start, end = (int(x) for x in input().split())
 
-# print(n)
-# for i, city in enumerate(cities, start=1):
-#     print(i, ": x =", city[0], ", y =", city[1])
-# print(max_distance)
-# print(start, end)
+    # print(n)
+    # for i, city in enumerate(cities, start=1):
+    #     print(i, ": x =", city[0], ", y =", city[1])
+    # print(max_distance)
+    # print(start, end)
 
-graph = dict()
-for i, city_from in enumerate(cities, start=1):
-    graph[i] = set()
-    current = graph[i]
-    for j, city_to in enumerate(cities, start=1):
-        if i != j and dist(city_from[0], city_from[1], city_to[0], city_to[1]) <= max_distance:
-            current.add(j)
+    graph = dict()
+    for i, city_from in enumerate(cities, start=1):
+        graph[i] = set()
+        current = graph[i]
+        for j, city_to in enumerate(cities, start=1):
+            if i != j and dist(city_from[0], city_from[1], city_to[0], city_to[1]) <= max_distance:
+                current.add(j)
 
-# print(graph)
+    # print(graph)
 
-print(find_path(graph, start, end))
+    print(find_path(graph, start, end))
+
+if __name__ == "__main__":
+  main()
